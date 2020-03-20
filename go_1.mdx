@@ -1,0 +1,324 @@
+import {
+  CodeSurfer,
+  Step,
+} from "code-surfer";
+import { nightOwl } from "@code-surfer/themes";
+
+export const theme = nightOwl;
+
+# Hello 👋
+GO Track - Day 1
+
+
+---
+
+We'll start off with a Hello World Program in Go
+
+---
+
+<CodeSurfer>
+
+```go title="Hello World Program for Go" subtitle="Basic Code"
+package main
+ 
+import "fmt"
+   
+func main(){
+      fmt.Println("Hello World")
+    }
+```
+```diff 1 subtitle="Every go program should start with a Package Declaration" title="Import the Package"
+
+```
+```diff 1[9:13] subtitle="'main' is the base package for any Go project"
+
+```
+```diff 3 subtitle="'Import' Tells the compiler which other package it should load"
+
+```
+```diff 3[8:12] subtitle="'fmt' is part of the standard library and is used for Strings and Formatting"
+
+```
+```diff 5,7 subtitle="We are defining our first function"
+
+```
+```diff 5[1:4] subtitle="'func' is the keyword for defining a function'"
+
+```
+```diff 5[12],6,7 subtitle="Function body is defined inside curly braces { }"
+```
+```diff 6 subtitle="We are printing the 'Hello World' string"
+
+```
+```diff 6[7:18] subtitle="We are calling the 'Println' function found in the 'fmt' package"
+
+```
+```diff 6[19:31] subtitle="We are defining the string inside double quotes. "
+
+```
+```diff 6[18,32] subtitle="We are defining the string inside double quotes and inside a parathesis of the function "
+
+```
+
+</CodeSurfer>
+
+---
+Now We need to Run the Application
+
+---
+For running GO applications, we use 👉
+
+---
+
+<CodeSurfer>
+
+```bash subtitle="go run directly executes the code"
+$ go run main.go
+
+# Output will be `Hello World`
+```
+
+```bash subtitle="go build creates a static binary of the whole project"
+$ go build main.go 
+
+# For running these binaries, we can run
+$ ./main
+```
+</CodeSurfer>
+
+---
+## Next we are going for Variables and Strings
+
+---
+## In go variables can be 
+- `declared first then use` and
+- `assign and use or on-the-go use`
+
+---
+
+<CodeSurfer>
+
+```go title="Declare and use" 
+package main
+
+import "fmt"
+
+func main() {
+	var i int
+	var s string
+
+	i = 10
+	s = "Canada"
+
+	fmt.Println(i)
+	fmt.Println(s)
+}
+```
+```diff 6[3:7],7[3:7] subtitle="Variables are initialized using the 'var' keyword"
+```
+```diff 6[9],7[9] subtitle="These are the variable names"
+```
+```diff 6[11:14],7[11:17] subtitle="While declaring variables, the data type type should be defined(optional)"
+```
+```go title="Declare and Assign" subtitle="Here we are declaring and initalizing a variable in the same time"
+package main
+
+import "fmt"
+
+func main() {
+	var i int = 10
+	var s string = "Canada"
+
+	fmt.Println(i) // op:10
+	fmt.Println(s) // op:Canada
+}
+```
+```go 6 subtitle="You can declare and assign without datatype"
+package main
+
+import "fmt"
+
+func main() {
+	var s = "Canada"
+
+	fmt.Println(s) 
+  // o/p: Canada
+}
+```
+```go 6[6,7],7[6,7] title="Declare and Assign" subtitle="The ':=' operator is used for assigning variables without declaration."
+package main
+
+import "fmt"
+
+func main() {
+	i:=10
+	s:="Canada"
+
+	fmt.Println(i)
+	fmt.Println(s)
+}
+```
+
+```diff 6,7 subtitle="Important: This should be only be done for variables in Local Scope or within a specific function or conditional"
+```
+```go title="You can declare and Assign multiple variables like this" subtitle="https://play.golang.org/p/GG9Q9GFTSC_r"
+package main
+
+import "fmt"
+
+func main() {
+	var fname, lname string = "John", "Doe"
+	m, n, o := 1, 2, 3
+	item, price := "Mobile", 2000
+
+	fmt.Println(fname + lname)
+	fmt.Println(m + n + o)
+	fmt.Println(item, "-", price)
+}
+```
+```diff 6 subtitle="Here, 2 strings are declared and assigned with 2 different variable names"
+```
+```diff 7 subtitle="Here, 3 different integers are assigned with 3 different variables using the shorthand declaration method"
+```
+```diff 8 subtitle="Here 2 variables are declared two different data types(string and Integer) in the shorthand declaration method"
+```
+```go subtitle="https://play.golang.org/p/WG2EveJasPZ"
+package main
+
+import "fmt"
+
+var (
+	product  = "Mobile"
+	quantity = 50
+	price    = 50.50
+	inStock  = true
+)
+
+func main() {
+	fmt.Println(quantity)
+	fmt.Println(price)
+	fmt.Println(product)
+	fmt.Println(inStock)
+}
+```
+```diff 5:10 title="Variables can be decalred as blocks of variables"
+```
+</CodeSurfer>
+
+---
+
+<CodeSurfer>
+
+```go title="How to get datatype of variable" subtitle="https://play.golang.org/p/V6YI2gLoRgj"
+package main
+
+import(
+	"fmt"
+  "reflect"
+)
+
+func main() {
+	var i = 10
+	var s = "Canada"
+
+	fmt.Println(reflect.TypeOf(i))
+	fmt.Println(reflect.TypeOf(s))
+}
+```
+```diff 5 subtitle="We need to import the 'reflect' package"
+```
+```diff 3:6 subtitle="To import multiple packages enclose the packages in paratheses ( )"
+```
+```diff 12[17:33],13[17:33] subtitle="We use the 'TypeOf' function from the package 'reflect' for outputting the type of the variable"
+```
+
+</CodeSurfer>
+
+---
+## Strings in GO
+
+---
+### Strings can be formatted in go with
+- \` string  \` (backticks)
+- "  string  "  (Double Quotes)
+- '  string  '  (Single Quotes)
+
+---
+
+
+<CodeSurfer>
+
+```go title="Strings formatted with (backtick) always display the same way they are written or Raw string literal" 
+package main
+
+import "fmt"
+
+func main() {
+    fmt.Println(`Let's print out
+	
+this string.`)
+}
+```
+</CodeSurfer>
+
+---
+
+<CodeSurfer>
+
+```go title="Strings formatted with (double quotes) can be highlt formatted with string literals" 
+package main
+
+import "fmt"
+
+func main() {
+    fmt.Println("Let's print out this string.")
+}
+```
+```go 6 title="With New line literal" subtitle="The output will have a newline break b/w 'out' and 'this'"
+package main
+
+import "fmt"
+
+func main() {
+    fmt.Println("Let's print out \n this string.")
+}
+```
+```go 6 title="With Tab literals" subtitle="The output will have a tab space(6 spaces)  b/w 'out' and 'this'"
+package main
+
+import "fmt"
+
+func main() {
+    fmt.Println("Let's print out \t this string.")
+}
+```
+```go title="You can concatenate two strings with the '+' operator "
+package main
+
+import "fmt"
+
+func main() {
+  name:="Athul"
+    fmt.Println("I am "+ name +", from Kerala")
+}
+```
+
+</CodeSurfer>
+
+---
+
+## Output will be 👇
+
+https://play.golang.org/p/JkcSDptEv7h
+
+---
+
+Thats all for today. 
+
+We completed
+- Basic Go syntax
+    - Hello World
+    - Variable Declarations
+    - String Formatting
+    - Daily assignment → Echo script
+    - Daily Assignment(Watch Rob Pike's Video) → https://youtu.be/cN_DpYBzKso
