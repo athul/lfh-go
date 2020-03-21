@@ -1,0 +1,316 @@
+import {
+  CodeSurfer,
+  Step,
+} from "code-surfer";
+import { nightOwl } from "@code-surfer/themes";
+
+export const theme = nightOwl;
+
+# Hello
+GO Track - Day 2
+
+---
+Today we'll be discussing about 
+- Data Types in Go
+- Conditionals in Go
+
+---
+
+## Data Types
+
+---
+## Basic Data Types
+
+- `string` -> Builtin type for strings
+- `bool` -> Builtin type for boolean(true or false)
+
+---
+## Numerical Data Types
+- `int` for Integers
+- `uint` for Unsigned Integers
+- `float` for Floating point/decimal numbers
+- `byte` for bytes
+
+
+
+---
+## Data types of `int`
+
+---
+
+<CodeSurfer>
+
+```go title="Signed Integer Data Type"
+package main
+
+import(
+    "fmt"
+    "reflect"
+    "unsafe"
+)
+
+func main() {
+    var(
+     a int8
+     b int16
+     c int32
+     d int64
+    )
+    // Printing Out
+    fmt.Printf("a's type is %s\n", reflect.TypeOf(a))
+    fmt.Printf("%d bytes\n", unsafe.Sizeof(a))
+    fmt.Printf("b's typs is %s\n", reflect.TypeOf(b))
+    fmt.Printf("%d bytes\n", unsafe.Sizeof(b))
+    fmt.Printf("b's typs is %s\n", reflect.TypeOf(c))
+    fmt.Printf("%d bytes\n", unsafe.Sizeof(c))
+    fmt.Printf("b's typs is %s\n", reflect.TypeOf(d))
+    fmt.Printf("%d bytes\n", unsafe.Sizeof(d))
+}
+```
+
+```diff 5,6 subtitle="We need to import the 'reflect' and 'unsafe' packages for some functions here"
+```
+```diff 10:15 subtitle="We're declaring thses variables as a Block"
+```
+```diff 11[8:12],12[8:13],13[8:13],14[8:14] subtitle="We are defining each vars with a specific-type of 'int'"
+```
+```diff 17,19,21,23 subtitle="We're going to print the typeof the variables"
+```
+```diff 18,20,22,24 subtitle="We're going to print the size taken by each type"
+```
+```diff 9:25 subtitle="https://play.golang.org/p/KMdfdjouySE"
+```
+``` go title="Unsigned Integer Data Type" subtitle="https://play.golang.org/p/70SSSzyH1Sd"
+package main
+
+import(
+    "fmt"
+    "reflect"
+    "unsafe"
+)
+
+func main() {
+    var(
+     a uint8
+     b uint16
+     c uint32
+     d uint64
+    )
+    // Printing Out
+    fmt.Printf("a's type is %s\n", reflect.TypeOf(a))
+    fmt.Printf("%d bytes\n", unsafe.Sizeof(a))
+    fmt.Printf("b's typs is %s\n", reflect.TypeOf(b))
+    fmt.Printf("%d bytes\n", unsafe.Sizeof(b))
+    fmt.Printf("b's typs is %s\n", reflect.TypeOf(c))
+    fmt.Printf("%d bytes\n", unsafe.Sizeof(c))
+    fmt.Printf("b's typs is %s\n", reflect.TypeOf(d))
+    fmt.Printf("%d bytes\n", unsafe.Sizeof(d))
+}
+```
+```diff 11:14 title="Difference b/w signed and unsigned int" subtitle="An unsigned int is an integer that can not be negative and thus has a higher range of positive values that it can assume. A signed int is an integer that can be negative but has a lower positive range in exchange for more negative values it can assume."
+```
+```go title="Float data type"
+package main
+
+import(
+    "fmt"
+    "reflect"
+    "unsafe"
+)
+
+func main() {
+    var(
+     a float32
+     b float64
+     c=2.3 //Assign a float
+    )
+    // Printing Out
+    fmt.Printf("a's type is %s\n", reflect.TypeOf(a))
+    fmt.Printf("%d bytes\n", unsafe.Sizeof(a))
+    fmt.Printf("b's typs is %s\n", reflect.TypeOf(b))
+    fmt.Printf("%d bytes\n", unsafe.Sizeof(b))
+    fmt.Printf("b's typs is %s\n", reflect.TypeOf(c))
+    fmt.Printf("%d bytes\n", unsafe.Sizeof(c))
+}
+```
+```diff 11[8:15],12[8:15],13[8:28] title="Only two float types are present" subtitle="https://play.golang.org/p/21Ol7zcsJEs"
+```
+```go subtitle="Go has a specific data type for complex numbers" title="Complex data type"
+package main
+
+import(
+    "fmt"
+    "reflect"
+    "unsafe"
+)
+
+func main(){
+    var a float32 = 3
+    var b float32 = 5
+    
+    //Initialize-1
+    c := complex(a, b)//saved as a+bi and as a complex64 type
+    
+    //Initialize-2
+    var d complex64
+    d = 4 + 5i
+    var e complex128
+    fmt.Println(c)
+    fmt.Println(d)
+    //Print Size
+    fmt.Printf("c's size is %d bytes\n", unsafe.Sizeof(c))
+    fmt.Printf("d's size is %d bytes\n", unsafe.Sizeof(d))
+    fmt.Printf("e's size is %d bytes\n", unsafe.Sizeof(e))
+    //Print type
+    fmt.Printf("c's type is %s\n", reflect.TypeOf(c))
+    fmt.Printf("d's type is %s\n", reflect.TypeOf(d))
+    fmt.Printf("e's type is %s\n", reflect.TypeOf(e))
+    
+    //Operations on complex number
+    fmt.Println(c+d, c-d, c*d, c/d)
+}
+```
+```diff 14 subtitle="We can make a new complex number from 2 floats"
+```
+```diff 17,18 subtitle="Or you can declare complex numbers like this"
+```
+```diff 31 title="https://play.golang.org/p/IetYxD6mpCq" subtitle="You can do arithematic operations on complex numbers in go"
+```
+```go title="Byte data type"
+package main
+
+import(
+	"fmt"
+	"reflect"
+	"unsafe"
+)
+
+func main() {
+	var r byte = 'r'
+	var b = ":	 ;."//string
+	s := "abc" //string
+	//Print Size
+	fmt.Printf("Size: %d\n", unsafe.Sizeof(r))
+	fmt.Printf("Size: %d\n", unsafe.Sizeof(b))
+
+	//Print Type
+	fmt.Printf("Type: %s\n", reflect.TypeOf(r))
+	fmt.Printf("Type: %s\n", reflect.TypeOf(b))
+
+	//Print Character
+	fmt.Printf("Character: %c\n", r)
+
+	fmt.Println(byte(r))
+	fmt.Println([]byte(b))//output as bytes
+	fmt.Println([]byte(s))// output as bytes
+}
+```
+```diff 10 subtitle="Initializing as byte data type"
+```
+```diff 11,12 subtitle="Initialize 2 strings"
+```
+```diff 25[17,18],26[17,18] subtitle="'[ ]' is used since multiple Characters are present"
+```
+```diff 24:26 title="The output will be the ascii of 'r' , 'b' , 's' variable" subtitle="https://play.golang.org/p/VUKM5oVEGTt"
+```
+</CodeSurfer>
+
+---
+
+## Composite Data Types
+- Arrays
+- Slices
+- Maps
+- Structs
+- Channels
+
+---
+## Arrays
+
+---
+
+<CodeSurfer>
+
+```go title="Arrays" subtitle="Arrays are of fixed Length and are static in the memory"
+package main
+
+import "fmt"
+
+func main() {
+    sample := [3]string{"a", "b", "c"}
+    fmt.Println(sample)
+}
+```
+```diff 6,7  subtitle="We're defining the array Here and printing it"
+```
+```go
+package main
+
+import "fmt"
+
+func main() {
+    sample := [3]string{"a", "b", "c"}
+    print(sample)
+}
+func print(sample [3]string) {
+    fmt.Println(sample)
+}
+```
+```diff 7,9:11 subtitle="'print' is a function for just printing the Array"
+```
+```diff 9[19:28] title="https://play.golang.org/p/qTwYgJ-zR7j" subtitle="You can see that the length of array is passed with the data type. This is a property of Arrays."
+```
+
+</CodeSurfer>
+
+---
+## Slices
+
+---
+
+<CodeSurfer>
+
+```go title="Slices" subtitle="Compared with arrays slices are dynamic"
+package main
+
+import "fmt"
+
+func main() {
+  s:=make([]string, 2, 3)
+  fmt.Println(s)
+}
+```
+```diff 6[6:26] subtitle="the 'make' keyword can be used to Initialize a slice"
+```
+```go subtitle="You can also Initialize slices directly"
+package main
+
+import "fmt"
+
+func main() {
+  p:=[]string{"a", "b", "c"}
+  fmt.Println(p)
+}
+```
+```diff 6[6,7] subtitle="You can notice that a definite length is not needed for slices"
+```
+
+```go 6[6:20] subtitle="You can also Initialize slices by the 'append' keyword" title="https://play.golang.org/p/t6704F2uZiH"
+package main
+
+import "fmt"
+
+func main() {
+  p =append(p, "d")
+  fmt.Println(p)
+}
+```
+</CodeSurfer>
+
+---
+## Recap
+- Data Types in Go
+- Int, string, bool, float etc...
+- Arrays and Slices
+- Task is to try -> type conversion. Google it and try out 
+- Also watch this video https://youtu.be/2y0pmRJNkLA
