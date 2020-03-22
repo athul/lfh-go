@@ -1,0 +1,194 @@
+import {
+  CodeSurfer,
+  Step,
+} from "code-surfer";
+import { nightOwl } from "@code-surfer/themes";
+
+export const theme = nightOwl;
+
+# Day 3 - Go Track
+
+---
+
+We'll talk about 
+- Conditionals
+- Switch
+- Loops
+
+---
+
+## Conditionals
+- `if`
+- `if-else-if`
+- `if-else`
+- `switch`
+
+---
+
+<CodeSurfer>
+
+```go title="IF condition in Go" 
+package main
+
+import "fmt"
+
+func main(){
+    if 8%4 == 0 {
+        fmt.Println("8 is divisible by 4")
+    }
+}
+```
+```diff 6[5,6] subtitle="If conditions are defined by the if keyword"
+```
+```diff 6[7:18] subtitle="'if' conditions in Go doesn't need a paranthesis to define the condition. You can use if without else in Go "
+```
+```diff 6[17],7,8 subtitle="but for the body { } are a must"
+```
+
+```go title="If-Else condition"
+package main
+
+import "fmt"
+
+func main(){
+    if 7%2 == 0 {
+        fmt.Println("7 is even")
+    }else {
+        fmt.Println("7 is odd")
+    }
+}
+```
+```diff 8[6:10] subtitle="'else' is defined from the end of the 'if' statement without a line break"
+```
+```diff 8[6:12],9,10 subtitle="Else block also should be enclosed within { }"
+```
+```go title="If-Elseif-Else"
+package main
+
+import "fmt"
+
+func main(){
+    if num:=9; num<0{
+        fmt.Println(num, "is negative")
+    }else if num<10{
+        fmt.Println(num, "has 1 digit")
+    }else{
+        fmt.Println(num, "has multiple digits")
+    }
+}
+```
+```diff 6:12 subtitle="Else-if used same way else is."
+```
+```diff 8[6:13] title="https://play.golang.org/p/4U4dR541Mpu" subtitle="There is only a space dividing else and if"
+```
+
+</CodeSurfer>
+
+---
+## Switch
+
+---
+
+<CodeSurfer>
+
+```go title="Switch in Go"
+package main
+
+import "fmt"
+
+func main(){
+	i := 2
+	fmt.Print("Write ", i, " as ")
+	switch i {
+	case 1:
+		fmt.Println("one")
+	case 2:
+		fmt.Println("two")
+	case 3:
+		fmt.Println("three")
+    default:
+        fmr.Println("No idea")
+	}
+}
+```
+
+```diff 8 subtitle="We're running the switch on the variable 'i' "
+```
+
+```diff 9,11,13 subtitle="Switch cases are checked with the 'case' keyword"
+```
+
+```diff 15,16 subtitle="There is a 'default' keyword if the condition is not withing the switch"
+```
+
+</CodeSurfer>
+
+---
+https://play.golang.org/p/JHRzHNERd1i
+
+---
+## Loops
+- Go has only one looping concept `for`
+
+---
+
+<CodeSurfer>
+
+```go title="For loops"
+package main
+
+import "fmt"
+
+func main() {
+	sum := 1
+	for i := 0; i < 10; i++{
+		sum += i
+	}
+	fmt.Println(sum)
+}
+```
+```diff 7[9:27] subtitle="for loops in go are similar to loops in C/C++"
+```
+```diff 7 subtitle="For loops in go also doesn't need any parathesis around the components"
+```
+```diff 7[28],8,9 subtitle="But the loop body should be in paranthesis '( )'"
+```
+```go title="For as While" subtitle="In go, for loops are also used as while loops"
+package main
+
+import "fmt"
+
+func main() {
+	sum := 1
+	for sum < 1000 {
+		sum += sum
+	 }
+	fmt.Println(sum)
+}
+```
+```go title="Infinite for loop"
+package main
+
+import "fmt"
+
+func main() {
+	for {
+        fmt.Println("loop")
+        break
+    }
+}
+```
+```diff 6,8 subtitle="There is no condition here, but the 'break' keyword will stop the execution of the loop"
+```
+</CodeSurfer>
+
+---
+https://play.golang.org/p/aUJdPXKOoGx
+
+---
+
+## Thats all for Today. We learned
+- Conditionals- if,else,else-if,switch
+- Loops - for
+- Assignment - **Build a Calculator app with switch**
+(Operators are same as in every programming lang)
