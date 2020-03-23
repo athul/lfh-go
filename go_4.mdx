@@ -1,0 +1,211 @@
+import {CodeSurfer,Step} from "code-surfer";
+import { nightOwl } from "@code-surfer/themes";
+
+export const theme = nightOwl;
+
+## Day 4 - Go Track
+
+---
+
+# We'll talk about Functions
+- Standard
+- Variadic
+- Recursive
+- Anonymous Functions or Closures
+
+---
+
+<CodeSurfer>
+
+```go title="Standard Functions"
+package main
+
+import "fmt"
+
+func plus(a int, b int)int{
+    return a + b
+}
+
+func main() {
+    res := plus(1, 2)
+    fmt.Println("1+2 =", res)
+}
+```
+```diff 5[10:23],10 subtitle="While defining Arguments we have to define the type of the args"
+```
+```diff 5[24:27],6 subtitle="The return type also has to defined while defining a new function"
+```
+```go title="Standard Functions"
+package main
+
+import "fmt"
+
+func plusPlus(a, b, c int) int {
+    return a + b + c
+}
+
+func main() {
+    res = plusPlus(1, 2, 3)
+    fmt.Println("1+2+3 =", res)
+}
+```
+```diff 5[14:27],10 title="https://play.golang.org/p/SzwfHEfXigA" subtitle="If there are multiple args and of same type, the type should be onl defined once"
+```
+```go title="Functions with multiple Returns"
+package main
+
+import "fmt"
+
+func vals()(int, int) {
+    return 3, 7
+}
+
+func main() {
+    a, b := vals()
+    fmt.Println(a)
+    fmt.Println(b)
+
+    _, c := vals()
+    fmt.Println(c)
+}
+```
+```diff 5[13:20],6 subtitle="You have to define the specific count of the types that the function will return "
+```
+```diff 10 subtitle="Here there are two variables since the function returns 2 data of type int"
+```
+```diff 14 subtitle="Here the '_' is used since we only need to get the data of the 2nd type that is being returned. This is also called blank identifier in Go"
+```
+</CodeSurfer>
+
+---
+## Variadic Functions
+
+---
+
+<CodeSurfer>
+
+```go title="Variadic Functions"
+package main
+
+import "fmt"
+
+func sum(nums ...int){
+    fmt.Print(nums, " ")
+    total := 0
+    for _, num := range nums {
+        total += num
+    }
+    fmt.Println(total)
+}
+
+func main() {
+    sum(1, 2)
+    sum(1, 2, 3)
+}
+```
+
+```diff 5[9:22] subtitle="The ellipsis(...) is used for defining Variadic Functions. This function can take an arbitrary number of arguments of int data type her"
+```
+
+```go
+package main
+
+import "fmt"
+
+func sum(nums ...int){
+    fmt.Print(nums, " ")
+    total := 0
+    for _, num := range nums {
+        total += num
+    }
+    fmt.Println(total)
+}
+
+func main() {
+    nums := []int{1, 2, 3, 4}
+    sum(nums...)
+}
+```
+
+```diff 15,16 title="https://play.golang.org/p/HcdSaPE5cX0" subtitle="We can also pass slices to variadic function with the variable and the ellipsis(...)"
+```
+
+</CodeSurfer>
+
+---
+## Recursive Functions
+
+---
+
+<CodeSurfer>
+
+```go subtitle="A function calling itself is called a recursive function"
+package main
+
+import "fmt"
+
+func fact(n int) int {
+    if n == 0 {
+        return 1
+    }
+    return n * fact(n-1)
+}
+
+func main() {
+    fmt.Println(fact(7))
+}
+```
+```diff 5 subtitle="We're defining the fact function here with an int arg and int return type"
+```
+```diff 9 subtitle="We're calling 'fact' inside fact too. Which makes it recursive"
+```
+
+</CodeSurfer>
+
+---
+## Anonymous Functions or Closures
+
+---
+
+<CodeSurfer>
+
+```go title="Anonymous Functions in Go"
+package main 
+
+import "fmt"
+
+func main() { 
+value:=func(){ 
+	fmt.Println("This is an anonymous Function") 
+    } 
+value()
+} 
+```
+
+```diff 6[8:14],7,8 subtitle="Anonymous functions are defined using simple the func Keyword"
+```
+
+```go title="Anonymous Function with Args"
+package main 
+
+import "fmt"
+
+func main() { 
+echo:=func(str string){ 
+	fmt.Println(str) 
+    } 
+echo("This is an anonymous function call")
+} 
+```
+
+```diff 6[7:23],7,8,9 subtitle="We're defining the function as echo with an arg and calling the function with the variable assigned"
+```
+
+</CodeSurfer>
+
+---
+
+## Thats all for today
+
+Watch this video as today's Assignment
+- https://youtu.be/uBjoTxosSys
