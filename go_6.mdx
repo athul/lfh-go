@@ -1,0 +1,74 @@
+import {CodeSurfer,Step} from "code-surfer";
+import { nightOwl } from "@code-surfer/themes";
+
+export const theme = nightOwl;
+
+## Day 6 
+Errors in Go
+
+---
+Error is a Data type in Go.
+
+---
+<CodeSurfer>
+
+```go
+package main
+
+import (
+    "errors"
+    "fmt"
+)
+
+func main() {
+    err := errors.New("barnacles")
+    fmt.Println("Sammy says:", err)
+}
+```
+```diff 4 subtitle="We need to import the error package in order to create a new error,"
+```
+```diff 9 subtitle="like this. Here err variable will save the error"
+```
+
+</CodeSurfer>
+
+---
+## Handling Errors in Go
+
+---
+
+<CodeSurfer>
+
+```go 
+package main
+
+import (
+    "errors"
+    "fmt"
+)
+
+func boom() error {
+    return errors.New("barnacles")
+}
+
+func main() {
+    err := boom()
+
+    if err != nil {
+        fmt.Println("An error occurred:", err)
+        return
+    }
+    fmt.Println("Anchors away!")
+}
+```
+```diff 8:10 subtitle="Here we're defining a function with an error return"
+```
+```diff 13 subtitle="We're calling the function"
+```
+```diff 15 subtitle="This is how errors are checked in go. If there is no error, it will return a 'nil' type."
+```
+
+```diff 15:18 subtitle="Since the function will return an error here. This block will run"
+```
+
+</CodeSurfer>

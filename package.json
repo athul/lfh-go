@@ -2,8 +2,8 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "start": "mdx-deck go_5.mdx",
-    "build": "mdx-deck build go_5.mdx",
+    "start": "mdx-deck go_6.mdx",
+    "build": "mdx-deck build go_6.mdx",
     "test": "echo \"there are no tests\""
   },
   "devDependencies": {
