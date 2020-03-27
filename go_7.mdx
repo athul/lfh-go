@@ -1,0 +1,122 @@
+import { CodeSurfer, Step } from "code-surfer";
+import { nightOwl } from "@code-surfer/themes";
+
+export const theme = nightOwl;
+
+# Day 7 
+Go Track
+
+---
+Structures and Methods
+
+---
+A Structure is a **User Defined Type**
+
+---
+
+<CodeSurfer>
+
+```go title="Defining Structures"
+package main
+
+import "fmt"
+
+type person struct {
+    name string
+    age  int
+}
+
+```
+```diff 5:8 subtitle="We declare Structures siliar to this"
+```
+```diff 5[1:5,13:19] subtitle="We use the Keyword 'type' followed with the structure name and the 'struct' keyword to define its a structure"
+```
+```diff 6,7 subtitle="We need to define the types of structure variables too"
+```
+
+```go
+package main
+
+import "fmt"
+
+type person struct {
+    name string
+    age  int
+}
+func main() {
+    fmt.Println(person{"Bob", 20})
+
+    fmt.Println(person{name: "Alice", age: 30})
+
+    fmt.Println(person{name: "Fred"})
+
+    s := person{name: "Sean", age: 50}
+    fmt.Println(s.name)
+    s.name="Linus"
+    fmt.Println(s.name)
+}
+```
+```diff 10,12,14,16 subtitle="We can assign values to structures via these methods"
+```
+```diff 14 subtitle="Here the 'age' data will be autmatically set to zero"
+```
+```diff 17 subtitle="The data from structures are accessed with the ' . '(dot) operator"
+```
+```diff 18,19 title="https://play.golang.org/p/FxrWEShcRsW" subtitle="Structs are mutable. You can update the value anytime"
+```
+
+</CodeSurfer>
+
+---
+## Methods
+
+---
+A Method is a function with a special receiver argument
+
+---
+
+<CodeSurfer>
+
+```go title="Defining Methods and Usage"
+package main
+
+import "fmt"
+
+type Employee struct {  
+    name     string
+    salary   int
+    currency string
+}
+
+func (e Employee) displaySalary() {  
+    fmt.Printf("Salary of %s is %s%d", e.name, e.currency, e.salary)
+}
+
+func main() {  
+    emp := Employee {
+        name:     "Athul Cyriac",
+        salary:   5000,
+        currency: "$",
+    }
+    emp.displaySalary() 
+}
+```
+
+```diff 5:10 subtitle="We're defining the Employee structure here"
+```
+```diff 11:13 subtitle="We're defining the method displaySalary here"
+```
+```diff 11 subtitle="We're defining the method with e as the receiver type. Therefore this method only works on the Employee struct"
+```
+```diff 21 subtitle="Calling displaySalary() method of Employee type"
+```
+```diff 11:22 title="https://play.golang.org/p/V3QAJG7TSOc" subtitle="Structures and Methods work like oop proceedings in Go"
+```
+
+</CodeSurfer>
+
+---
+
+Thats all for Today. 
+- We'll complete the track by tommorow.
+- We'll be having a brainstorming session after tommorow
